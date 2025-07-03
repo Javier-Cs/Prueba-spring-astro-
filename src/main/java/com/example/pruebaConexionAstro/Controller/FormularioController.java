@@ -2,6 +2,7 @@ package com.example.pruebaConexionAstro.Controller;
 
 import com.example.pruebaConexionAstro.Entity.Formulario;
 import com.example.pruebaConexionAstro.Service.FormServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class FormularioController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Formulario> postFormulario(@RequestBody Formulario form) {
+    public ResponseEntity<Formulario> postFormulario(@Valid @RequestBody Formulario form) {
         Formulario formulario = formService.saveForm(form);
         return ResponseEntity.status(HttpStatus.CREATED).body(formulario);
     }
